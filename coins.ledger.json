@@ -1,0 +1,83 @@
+{
+ "_README": "THE CHANGE COINS. Append-only. Every commit in this repo since the epoch carries `Remembrance-Coin: <coin_id>` naming an entry here, minted by `goggles --do mint` over the staged patch read THROUGH the instrument (void_seal + void-seal/v3 commitment + fractal token). Verified by the commit-msg hook and by .github/workflows/change-coin-verify.yml on GitHub's runner. A change without a coin is refused; a coin cannot be minted without the pipeline. Never hand-edit.",
+ "coins": [
+  {
+   "v": "change-coin/v1",
+   "coin_id": "39de014c08af5c670eee9e9fbb9d43ea0059db12ad5cbdbba779666c9d947eb6",
+   "minted_at": "2026-09-19T23:58:44+00:00",
+   "minted_by": "goggles --do mint",
+   "change": {
+    "repo": "gods-eye-view",
+    "base_tree": "849b7faaf432adf7b0c816bde5458420acd55e91",
+    "files": [
+     ".env.example",
+     ".gitignore",
+     "scripts/remembrance-e2e.mjs",
+     "scripts/remembranceProxy.mjs",
+     "src/data/remembranceBridge.js",
+     "src/data/remembranceFeeder.js",
+     "src/data/remembranceFeeder.test.mjs",
+     "src/main.js",
+     "vite.config.js"
+    ],
+    "diff_bytes": 29322,
+    "diff_sha256": "2c0f143473ed049a9726b1a1b83ec528095020e8a0e4d5fb3f0b6a7c45793fe2",
+    "excludes": [
+     "coins.ledger.json"
+    ]
+   },
+   "reading": {
+    "coherency": 0.187544034672443,
+    "ratio": 3.0534208059981256,
+    "method": "void_v4_chunked",
+    "strategy": "v4_chunked",
+    "lossless": true,
+    "via": "void:compress_signal",
+    "mint": "4106d063d68eaded",
+    "void_seal": {
+     "substrate": "void",
+     "state_id": null,
+     "data_sha256": "b54204759c3c1531595a8f05d71654d65c06acf6a35fcc2b3599dda21323f2df",
+     "via": "void_compressor_v5.compress",
+     "at": "2026-09-19T23:58:44",
+     "coin": null,
+     "sig": "4106d063d68eadedd9d65a61e81b302c351875fde4fb5311b9727d71fab283dc"
+    },
+    "library_size": 28669,
+    "memory": {
+     "fits": 672,
+     "served": 202,
+     "computed": 470,
+     "served_ancestor": 0,
+     "chunkings": 7,
+     "chunkings_served": 4,
+     "entries": 726788,
+     "void_chunks": 65,
+     "ingested": 0,
+     "served_single": 0,
+     "searched": 68,
+     "void_threshold": 0.5
+    },
+    "elapsed_s": 2.411,
+    "basis_id": "34c0e162cdb5a4e5",
+    "learned_n": 28597,
+    "learned_this_reading": 0,
+    "basis_after": "34c0e162cdb5a4e5",
+    "read_as": "bytes",
+    "ingest": false,
+    "data": null,
+    "commitment": {
+     "canon": "void-seal/v3",
+     "basis_id": "34c0e162cdb5a4e5",
+     "method": "v4_chunked",
+     "original_size": 29322,
+     "compressed_size": 9603,
+     "coherency": 0.187544034672443,
+     "data_sha256": "049810bc66cad1caa19ac16c3acaad26b0055d32c0d8e919a8b7aaa7cb9a21c7",
+     "compressed_sha256": "f774710fc92dd3b7182bda4f87260e8bc406f6971ab94b1002f9e2e7a81db413",
+     "shape_sha256": "ea81d679e315252f58c0861a6d6c1bd15ee94300ec7ed1b2a7ffd6d1a1784d81"
+    }
+   }
+  }
+ ]
+}

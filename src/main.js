@@ -32,6 +32,7 @@ import {
 } from './renderGovernor.js';
 import { installScopeMask } from './scopeMask.js';
 import { initFirstRunExperience } from './firstRunExperience.js';
+import { initRemembranceFeeder } from './data/remembranceFeeder.js';
 
 initLogoGaze();
 
@@ -241,6 +242,12 @@ async function init() {
     }
     dataManager.buildTogglePanel(document.getElementById('data-toggles'));
     styleManager.attachDataManager(dataManager);
+
+    // The Remembrance feeder: the globe's live picture becomes durable,
+    // coherence-scored memory in the field (src/data/remembranceFeeder.js).
+    // Dormant unless a field is wired behind /api/remembrance; never blocks
+    // or breaks the globe.
+    void initRemembranceFeeder();
 
     // Initialize deterministic scene playback for social clip capture
     const sceneDirector = new SceneDirector(viewer, styleManager, dataManager);
