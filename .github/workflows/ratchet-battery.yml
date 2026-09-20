@@ -1,0 +1,64 @@
+name: ratchet-battery
+
+# The full 16-gate battery, run on this repo's PRs and pushes. The battery
+# lives in the hub (remembrance-oracle-toolkit); this workflow reproduces
+# the local sibling layout the battery expects (this repo + hub + Void),
+# then invokes it from the hub directory. C-62 (goggles-skill byte-identity
+# across every repo) is what a drift in THIS repo's mirror against the
+# hub's canonical fails on.
+#
+# Make this REQUIRED in branch protection to arm it — the operator's
+# ruling, 2026-09-20, approaching world markets: every merge in every
+# ecosystem repo confirms the 16 gates before it lands.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ratchet-battery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo (GEV, the PR head)
+        uses: actions/checkout@v4
+        with:
+          path: gods-eye-view
+
+      - name: Checkout the hub (canonical battery + mirror source)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/remembrance-oracle-toolkit
+          path: remembrance-oracle-toolkit
+
+      - name: Checkout Void (the battery's sibling for contract + engine gates)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/Void-Data-Compressor
+          path: Void-Data-Compressor
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install hub deps
+        working-directory: remembrance-oracle-toolkit
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Build the cathedral diagnostic (the covenant ratchet reads it)
+        working-directory: remembrance-oracle-toolkit
+        run: node scripts/cathedral-diagnostic.js
+
+      - name: Run the full ratchet battery
+        working-directory: remembrance-oracle-toolkit
+        run: node scripts/ratchet-battery.js
