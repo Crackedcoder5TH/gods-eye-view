@@ -33,6 +33,7 @@ import { Readable } from 'node:stream';
 import https from 'node:https';
 import { lookup as lookupDns } from 'node:dns/promises';
 import { directionToHeading } from './src/data/directionText.js';
+import { remembranceProxy } from './scripts/remembranceProxy.mjs';
 import {
   isValidTileCoord as isValidTomTomTile,
   utcDayKey as tomtomUtcDayKey,
@@ -7360,6 +7361,7 @@ export default defineConfig(({ mode }) => {
       trackBackfillProxies(),
       openAiRealtimeProxy(),
       googlePlacesContextProxy(),
+      remembranceProxy(),
     ],
     server: {
       host: env.HOST || 'localhost',

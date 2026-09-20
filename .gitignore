@@ -7,6 +7,7 @@ qa-shots/
 output/
 .gev-logs/
 .gev-cache/
+.remembrance/
 .DS_Store
 .gstack/
 3d-models/
