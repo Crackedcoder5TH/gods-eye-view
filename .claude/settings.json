@@ -1,0 +1,68 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /home/user/remembrance-oracle-toolkit/src/tools/trap-guard-hook.js || echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"GOGGLES — WALL UNAVAILABLE refused (fail closed): trap-guard-hook did not run\"}}'",
+            "statusMessage": "goggles: the trap ledger listens on every tool"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /home/user/remembrance-oracle-toolkit/src/tools/goggles-pre-hook.js || echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"GOGGLES — WALL UNAVAILABLE refused (fail closed): goggles-pre-hook did not run\"}}'",
+            "statusMessage": "goggles: the reading before the write (goggled-first)"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /home/user/remembrance-oracle-toolkit/src/tools/goggles-bash-hook.js || echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"GOGGLES — WALL UNAVAILABLE refused (fail closed): goggles-bash-hook did not run\"}}'",
+            "statusMessage": "goggles: the wall — only the goggles run inside the ecosystem"
+          }
+        ]
+      },
+      {
+        "matcher": "Grep|Glob|Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /home/user/remembrance-oracle-toolkit/src/tools/goggles-search-hook.js || echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"GOGGLES — WALL UNAVAILABLE refused (fail closed): goggles-search-hook did not run\"}}'",
+            "statusMessage": "goggles: searches go through --do find; reads are recorded"
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /home/user/remembrance-oracle-toolkit/src/tools/goggles-web-hook.js || true",
+            "statusMessage": "goggles: reading the page through the substrate"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /home/user/remembrance-oracle-toolkit/src/tools/goggles-hook.js || true",
+            "statusMessage": "goggles: reading coherence/resonance"
+          }
+        ]
+      }
+    ]
+  }
+}
